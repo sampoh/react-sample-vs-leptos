@@ -1,0 +1,12 @@
+// Cloudflare Workers (Static Assets) の設定
+// vite build で生成した dist/ をそのまま配信する。Worker スクリプトは持たない。
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "react-sample-vs-leptos",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./dist",
+    // 未知のパスは index.html を返す (パスベースのルーティング用 SPA フォールバック)
+    "not_found_handling": "single-page-application"
+  }
+}

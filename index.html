@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>React Demo</title>
+    <meta name="description" content="Leptos デモアプリと同じものを React + Tailwind CSS で作った CSR (SPA) のデモアプリ。" />
+    <!-- 検索エンジン・AI ボットによるインデックス/学習を拒否 -->
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex, noai, noimageai" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' rx='3' fill='%2318181b'/><path d='M5 12V4h3.5a2 2 0 0 1 0 4H5m3 0 3 4' stroke='white' stroke-width='1.8' fill='none'/></svg>" />
+    <!-- テーマのちらつき防止: JS バンドル読み込み前に dark クラスを決める -->
+    <script>
+      try {
+        const t = localStorage.getItem("theme");
+        if (t === "dark" || (!t && matchMedia("(prefers-color-scheme: dark)").matches))
+          document.documentElement.classList.add("dark");
+      } catch (_) {}
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+  </head>
+  <body class="bg-white text-zinc-900 antialiased dark:bg-zinc-950 dark:text-zinc-100">
+    <div id="root"></div>
+  </body>
+</html>
