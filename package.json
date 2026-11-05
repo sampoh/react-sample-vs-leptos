@@ -5,6 +5,15 @@
   "description": "Leptos デモアプリと同じものを React で作った比較用 SPA",
   "license": "MIT",
   "type": "module",
+  "packageManager": "npm@11.20.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint": "oxlint",
+    "typecheck": "tsc",
+    "deploy": "npm run build && npx wrangler deploy"
+  },
   "dependencies": {
     "react": "19.3.1",
     "react-dom": "19.3.1",
@@ -19,14 +28,7 @@
     "oxlint": "1.90.0",
     "tailwindcss": "4.3.4",
     "typescript": "7.0.2",
-    "vite": "8.3.5"
-  },
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
-    "lint": "oxlint",
-    "typecheck": "tsc",
-    "deploy": "npm run build && npx wrangler deploy"
+    "vite": "8.3.5",
+    "wrangler": "latest"
   }
 }

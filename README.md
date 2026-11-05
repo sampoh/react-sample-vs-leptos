@@ -2,7 +2,8 @@
 
 [Leptos デモアプリ](https://github.com/sampoh/leptos-sample) と同じものを React 19 (CSR) + TypeScript 7 + Tailwind CSS 4 で作った SPA です。ページ構成・見た目・機能を揃え、React らしい書き方 (useState / useMemo / memo / useCallback) で書き直しています。
 
-Leptos 版: https://leptos-sample.takahara.workers.dev/
+- React 版: https://react-sample-vs-leptos.takahara.workers.dev/
+- Leptos 版: https://leptos-sample.takahara.workers.dev/
 
 | ページ | 内容 |
 | --- | --- |
@@ -32,7 +33,7 @@ npm run preview    # ビルド結果を配信。計測するときはこちら
 npm run lint       # oxlint
 ```
 
-lint はエラー・警告ともゼロを保っています (CI では `--deny-warnings` で警告もエラー扱い)。`oxlint-disable` コメントも使っていません。
+lint はエラー・警告ともゼロを保っています (`npm run lint -- --deny-warnings` で警告もエラー扱いにして確認できます)。`oxlint-disable` コメントも使っていません。
 
 ## Leptos 版との書き方の違い
 
@@ -48,14 +49,10 @@ lint はエラー・警告ともゼロを保っています (CI では `--deny-w
 
 ## デプロイ (Cloudflare Workers)
 
-`main` に push すると GitHub Actions (`.github/workflows/deploy.yml`) が lint → `npm run build` を実行し、`dist/` を Cloudflare Workers の Static Assets としてデプロイします。PR では lint とビルドの確認だけを行います。
+`npm run deploy` で `npm run build` を実行し、`dist/` を Cloudflare Workers の Static Assets としてデプロイします (初回は `npx wrangler login` で Cloudflare にログインしてください)。
 
-- `wrangler.jsonc` … Worker 名 `react-sample-vs-leptos`、配信ディレクトリ `dist/`、SPA フォールバック
+- `wrangler.jsonc` … Worker 名 `react-sample-vs-leptos`、配信ディレクトリ `dist/`、SPA フォールバック、workers.dev / プレビュー URL の有効化
 - `public/_headers` … 全レスポンスに `X-Robots-Tag` などを付与 (Vite が `dist/` にコピー)
-
-初回のみ、GitHub リポジトリの Settings → Secrets and variables → Actions に `CLOUDFLARE_API_TOKEN` と `CLOUDFLARE_ACCOUNT_ID` を登録してください (取得方法は Leptos 版の README と同じです)。
-
-手元からデプロイする場合は `npm run deploy` です。
 
 ## 構成
 

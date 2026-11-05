@@ -4,6 +4,10 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "react-sample-vs-leptos",
   "compatibility_date": "2026-11-01",
+  // *.workers.dev の URL を有効にする (デプロイのたびにこの設定が反映される)
+  "workers_dev": true,
+  // プレビュー URL (*-react-sample-vs-leptos.<サブドメイン>.workers.dev) も有効にする
+  "preview_urls": true,
   "assets": {
     "directory": "./dist",
     // 未知のパスは index.html を返す (パスベースのルーティング用 SPA フォールバック)
